@@ -23,4 +23,18 @@ import net.daporkchop.terrain.api.util.IBlockAccess;
  * @author DaPorkchop_
  */
 public interface Chunk extends IBlockAccess {
+    /**
+     * @return this chunk's X coordinate in the world
+     */
+    int x();
+
+    /**
+     * @return this chunk's Y coordinate in the world
+     */
+    int y();
+
+    /**
+     * @return this chunk's Z coordinate in the world
+     */
+    int z();
 }

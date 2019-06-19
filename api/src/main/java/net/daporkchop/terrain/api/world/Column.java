@@ -40,4 +40,23 @@ public interface Column extends IBlockAccess {
      * @return the highest valid chunk Y coordinate in this column
      */
     int maxChunkY();
+
+    /**
+     * @return this column's X coordinate in the world
+     */
+    int x();
+
+    /**
+     * @return this column's Z coordinate in the world
+     */
+    int z();
+
+    /**
+     * Gets the chunk at the given y coordinate in this column.
+     *
+     * @param y the y coordinate of the chunk
+     * @return the chunk at the given y coordinate, or {@code null} if it doesn't exist
+     * @throws IllegalArgumentException if the given coordinate is out of bounds
+     */
+    Chunk getChunk(int y);
 }

@@ -15,6 +15,7 @@
 
 package net.daporkchop.terrain.api.world;
 
+import lombok.NonNull;
 import net.daporkchop.terrain.api.util.IBlockAccess;
 
 /**
@@ -41,4 +42,17 @@ public interface World extends IBlockAccess {
      * @return the seed used for this world
      */
     long seed();
+
+    /**
+     * Creates a new chunk instance that is compatible with this world.
+     * <p>
+     * This method is intended for use in {@link net.daporkchop.terrain.api.Generator#generateChunk(World, Column, int, int, int)}.
+     *
+     * @param column the column that the chunk will be in
+     * @param chunkX the x coordinate of the chunk (in chunks)
+     * @param chunkY the y coordinate of the chunk (in chunks)
+     * @param chunkZ the z coordinate of the chunk (in chunks)
+     * @return a newly created chunk
+     */
+    Chunk createChunk(@NonNull Column column, int chunkX, int chunkY, int chunkZ);
 }

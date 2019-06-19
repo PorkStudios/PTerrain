@@ -40,19 +40,21 @@ public interface Generator {
     /**
      * Generates a single chunk in a given world.
      *
-     * @param world  the world to generate the chunk in
+     * @param world  the world that the chunk will be in
+     * @param column the column that the chunk will be in
      * @param chunkX the x coordinate of the chunk (in chunks)
      * @param chunkY the y coordinate of the chunk (in chunks)
      * @param chunkZ the z coordinate of the chunk (in chunks)
      * @return a chunk containing block data for the given coordinates
      */
-    Chunk generateChunk(@NonNull World world, int chunkX, int chunkY, int chunkZ);
+    Chunk generateChunk(@NonNull World world, @NonNull Column column, int chunkX, int chunkY, int chunkZ);
 
     /**
      * Populates a chunk.
-     *
+     * <p>
      * Population is different from generation because it requires the presence of neighboring chunks, as generated objects
      * might go over chunk borders.
+     *
      * @param blocks a {@link IBlockAccess} that may be used to get and set blocks in the chunk and neighboring chunks. The
      *               coordinate (0,0,0) will be equivalent to the coordinate (8,8,8) in the chunk being populated. This
      *               gives populators an 8 block padding on all sides to overflow into without having to worry about chunk

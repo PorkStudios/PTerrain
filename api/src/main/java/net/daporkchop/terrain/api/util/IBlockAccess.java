@@ -15,6 +15,9 @@
 
 package net.daporkchop.terrain.api.util;
 
+import lombok.NonNull;
+import net.daporkchop.terrain.api.world.BlockState;
+
 /**
  * A type that can access blocks at given coordinates.
  *
@@ -74,4 +77,27 @@ public interface IBlockAccess {
      * @return the highest Z coordinate in this region at which there can still be blocks
      */
     int maxZ();
+
+    /**
+     * Gets the {@link BlockState} at the given coordinates.
+     *
+     * @param x the X coordinate of the block. Must be between {@link #minX()} and {@link #maxX()} (inclusive)
+     * @param y the Y coordinate of the block. Must be between {@link #minY()} and {@link #maxY()} (inclusive)
+     * @param z the Z coordinate of the block. Must be between {@link #minZ()} and {@link #maxZ()} (inclusive)
+     * @return the {@link BlockState} at the given coordinates
+     * @throws IllegalArgumentException if the given coordinates are out of bounds
+     */
+    BlockState getBlock(int x, int y, int z);
+
+    /**
+     * Sets the {@link BlockState} at the given coordinates.
+     *
+     * @param x     the X coordinate of the block. Must be between {@link #minX()} and {@link #maxX()} (inclusive)
+     * @param y     the Y coordinate of the block. Must be between {@link #minY()} and {@link #maxY()} (inclusive)
+     * @param z     the Z coordinate of the block. Must be between {@link #minZ()} and {@link #maxZ()} (inclusive)
+     * @param state the block state to change to
+     * @throws IllegalArgumentException if the given coordinates are out of bounds
+     * @throws NullPointerException     if the given block state is {@code null}
+     */
+    void setBlock(int x, int y, int z, @NonNull BlockState state);
 }
