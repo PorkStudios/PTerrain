@@ -13,12 +13,22 @@
  *
  */
 
-rootProject.name = 'PTerrain'
+package net.daporkchop.terrain.api.util;
 
-include 'api'
-include 'gen'
-include 'impl'
-include 'impl:nukkitx'
+import lombok.NonNull;
+import net.daporkchop.terrain.api.implementation.Server;
+import net.daporkchop.terrain.api.world.World;
 
-findProject(':impl:nukkitx')?.name = 'NukkitX'
-
+/**
+ * A type that can be initialized using a specific {@link Server} and {@link World} instance.
+ *
+ * @author DaPorkchop_
+ */
+public interface Initializeable {
+    /**
+     * Initializes this object using the given server and world.
+     * @param server the server instance to be used
+     * @param world the world instance to be used
+     */
+    void init(@NonNull Server server, @NonNull World world);
+}

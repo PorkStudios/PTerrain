@@ -13,12 +13,9 @@
  *
  */
 
-rootProject.name = 'PTerrain'
+dependencies {
+    compileOnly "com.nukkitx:nukkitx-api:2.0.0-SNAPSHOT"
 
-include 'api'
-include 'gen'
-include 'impl'
-include 'impl:nukkitx'
-
-findProject(':impl:nukkitx')?.name = 'NukkitX'
-
+    runtimeOnly "com.nukkitx:nukkitx-bootstrap:1.11.0-SNAPSHOT"
+    runtimeOnly "com.nukkitx:nukkitx-server:1.11.0-SNAPSHOT"
+}

@@ -14,4 +14,5 @@
  */
 
 dependencies {
+    compile "net.daporkchop.lib:math:$porklibVersion"
 }

@@ -13,12 +13,8 @@
  *
  */
 
-rootProject.name = 'PTerrain'
-
-include 'api'
-include 'gen'
-include 'impl'
-include 'impl:nukkitx'
-
-findProject(':impl:nukkitx')?.name = 'NukkitX'
-
+subprojects {
+    dependencies {
+        compile project(":api")
+    }
+}

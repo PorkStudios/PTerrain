@@ -16,7 +16,10 @@
 package net.daporkchop.terrain.api;
 
 import lombok.NonNull;
+import net.daporkchop.lib.math.vector.d.Vec3d;
+import net.daporkchop.terrain.api.implementation.Server;
 import net.daporkchop.terrain.api.util.IBlockAccess;
+import net.daporkchop.terrain.api.util.Initializeable;
 import net.daporkchop.terrain.api.world.Chunk;
 import net.daporkchop.terrain.api.world.Column;
 import net.daporkchop.terrain.api.world.World;
@@ -26,16 +29,19 @@ import net.daporkchop.terrain.api.world.World;
  *
  * @author DaPorkchop_
  */
-public interface Generator {
+public interface Generator extends Initializeable {
+    @Override
+    void init(@NonNull Server server, @NonNull World world);
+
     /**
-     * Initializes a single column in a given world.
+     * Prepares a single column in a given world.
      *
      * @param world   the world that the column will be in
      * @param column  the column
      * @param columnX the x coordinate of the column (in columns)
      * @param columnZ the x coordinate of the column (in columns)
      */
-    void initColumn(@NonNull World world, @NonNull Column column, int columnX, int columnZ);
+    void prepareColumn(@NonNull World world, @NonNull Column column, int columnX, int columnZ);
 
     /**
      * Generates a single chunk in a given world.
@@ -64,4 +70,13 @@ public interface Generator {
      * @param chunkZ the z coordinate of the chunk (in chunks)
      */
     void populateChunk(@NonNull IBlockAccess blocks, int chunkX, int chunkY, int chunkZ);
+
+    /**
+     * Finds the default spawn position.
+     *
+     * @return the default spawn position
+     */
+    default Vec3d computeSpawnPosition() {
+        return new Vec3d(0.0d, 0.0d, 0.0d);
+    }
 }

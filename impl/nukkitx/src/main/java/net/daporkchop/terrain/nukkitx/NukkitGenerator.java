@@ -13,12 +13,40 @@
  *
  */
 
-rootProject.name = 'PTerrain'
+package net.daporkchop.terrain.nukkitx;
 
-include 'api'
-include 'gen'
-include 'impl'
-include 'impl:nukkitx'
+import com.flowpowered.math.vector.Vector3f;
+import com.nukkitx.api.Server;
+import com.nukkitx.api.level.Level;
+import com.nukkitx.api.level.chunk.Chunk;
+import com.nukkitx.api.level.chunk.generator.ChunkGenerator;
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+import lombok.experimental.Accessors;
 
-findProject(':impl:nukkitx')?.name = 'NukkitX'
+import java.util.Random;
 
+/**
+ * @author DaPorkchop_
+ */
+@RequiredArgsConstructor
+@Getter
+@Accessors(fluent = true)
+public class NukkitGenerator implements ChunkGenerator {
+    @NonNull
+    protected final Server server;
+
+    @Override
+    public void generateChunk(Level level, Chunk chunk, Random random) {
+    }
+
+    @Override
+    public void populateChunk(Level level, Chunk chunk, Random random) {
+    }
+
+    @Override
+    public Vector3f getDefaultSpawn() {
+        return null;
+    }
+}

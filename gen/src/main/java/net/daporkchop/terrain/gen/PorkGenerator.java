@@ -13,12 +13,36 @@
  *
  */
 
-rootProject.name = 'PTerrain'
+package net.daporkchop.terrain.gen;
 
-include 'api'
-include 'gen'
-include 'impl'
-include 'impl:nukkitx'
+import lombok.NonNull;
+import net.daporkchop.terrain.api.Generator;
+import net.daporkchop.terrain.api.implementation.Server;
+import net.daporkchop.terrain.api.util.IBlockAccess;
+import net.daporkchop.terrain.api.world.Chunk;
+import net.daporkchop.terrain.api.world.Column;
+import net.daporkchop.terrain.api.world.World;
 
-findProject(':impl:nukkitx')?.name = 'NukkitX'
+/**
+ * The main generator class for porkian terrain generation.
+ *
+ * @author DaPorkchop_
+ */
+public class PorkGenerator implements Generator {
+    @Override
+    public void init(@NonNull Server server, @NonNull World world) {
+    }
 
+    @Override
+    public void prepareColumn(@NonNull World world, @NonNull Column column, int columnX, int columnZ) {
+    }
+
+    @Override
+    public Chunk generateChunk(@NonNull World world, @NonNull Column column, int chunkX, int chunkY, int chunkZ) {
+        return null;
+    }
+
+    @Override
+    public void populateChunk(@NonNull IBlockAccess blocks, int chunkX, int chunkY, int chunkZ) {
+    }
+}

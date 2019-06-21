@@ -29,11 +29,15 @@ subprojects {
 
     ext {
         junitVersion = '4.12'
+        porklibVersion = '0.3.0-SNAPSHOT'
     }
 
     repositories {
         mavenLocal()
-        //TODO: add my maven when i get it back online
+        maven {
+            name = "DaPorkchop_"
+            url = "https://maven.daporkchop.net/"
+        }
         maven {
             name = "Sonatype Snapshots"
             url = "https://oss.sonatype.org/content/repositories/snapshots/"

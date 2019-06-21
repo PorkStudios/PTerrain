@@ -13,12 +13,48 @@
  *
  */
 
-rootProject.name = 'PTerrain'
+package net.daporkchop.terrain.nukkitx;
 
-include 'api'
-include 'gen'
-include 'impl'
-include 'impl:nukkitx'
+import com.nukkitx.api.Server;
+import com.nukkitx.api.event.Listener;
+import com.nukkitx.api.event.server.ServerInitializationEvent;
+import com.nukkitx.api.event.server.ServerStartEvent;
+import com.nukkitx.api.plugin.Plugin;
+import com.nukkitx.api.plugin.PluginDescription;
+import org.slf4j.Logger;
 
-findProject(':impl:nukkitx')?.name = 'NukkitX'
+import javax.inject.Inject;
+import java.nio.file.Path;
 
+/**
+ * @author DaPorkchop_
+ */
+@Plugin(
+        id = "PTerrain",
+        authors = {"PorkStudios"},
+        version = "0.0.1-SNAPSHOT"
+)
+public class NukkitX {
+    private final Logger logger;
+    private final PluginDescription description;
+    private final Path dataFolder;
+    private final Server server;
+
+    @Inject
+    private NukkitX(Logger logger, PluginDescription description, Path dataFolder, Server server) {
+        this.logger = logger;
+        this.description = description;
+        this.dataFolder = dataFolder;
+        this.server = server;
+    }
+
+    @Listener
+    public void onInitialization(ServerInitializationEvent event) {
+        this.server.getGeneratorRegistry().register("PORK", NukkitGenerator::new);
+    }
+
+    @Listener
+    public void onStart(ServerStartEvent event) {
+        this.server. //TODO: i need a way to iterate over all configured levels
+    }
+}
